@@ -1,0 +1,281 @@
+{
+    "categories": {
+        "serviceConnections": {
+            "id": "AdoSTG-SC",
+            "tests": [
+                {
+                    "name": "Dynamic Service Connection(s)",
+                    "id": "AdoSTG-SC-01",
+                    "reference": "https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops",
+                    "objectives": [
+                        "Check for dynamic expressions in service connections - these would allow an attacker to inject code and take over the service potentially"
+                    ]
+                },
+                {
+                    "name": "Exposed Service Connection(s) in Enviornmental Variable(s)",
+                    "id": "AdoSTG-SC-02",
+                    "reference": "https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops",
+                    "objectives": [
+                        "Check for exposure in environmental variables, as these could leak to logs, etc."
+                    ]
+                },
+                {
+                    "name": "Possible use of 'Grant access to all pipelines' Service Connection",
+                    "id": "AdoSTG-SC-03",
+                    "reference": "https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops",
+                    "objectives": [
+                        "Check for 'Grant access to all pipelines'"
+                    ]
+                }
+            ]
+        },
+        "ai": {
+            "id": "AdoSTG-AI",
+            "tests": [
+                {
+                    "name": "'AI' Token Exfiltration",
+                    "id": "AdoSTG-AI-01",
+                    "reference": "https://github.com/praetorian-inc/trajan/blob/main/pkg/azuredevops/detections/ai/ai.go",
+                    "objectives": [
+                        "Identify pipelines where untrusted input and triggers can be used to coerce \"AI\" to exfiltrate sensitive tokens"
+                    ]
+                },
+                {
+                    "name": "'AI' Receives Untrusted Input",
+                    "id": "AdoSTG-AI-02",
+                    "reference": "https://github.com/praetorian-inc/trajan/blob/main/pkg/azuredevops/detections/ai/ai.go",
+                    "objectives": [
+                        "Identify pipelines where users can inject untrusted input to \"AI\""
+                    ]
+                },
+                {
+                    "name": "Insecure MCP Setup",
+                    "id": "AdoSTG-AI-03",
+                    "reference": "https://github.com/praetorian-inc/trajan/blob/main/pkg/azuredevops/detections/ai/ai.go",
+                    "objectives": [
+                        "Identify the use of MCP servers in pipelines and assess if untrusted input is passed to the pipeline, and if the pipeline has token access"
+                    ]
+                }
+            ]
+        },
+        "secretExposure": {
+            "id": "AdoSTG-SE",
+            "tests": [
+                {
+                    "name": "Echo command with variable expansion",
+                    "id": "AdoSTG-SE-01",
+                    "reference": "",
+                    "objectives": [
+                        "Identify functionality exposing secrets"
+                    ]
+                },
+                {
+                    "name": "Secrets Sent via HTTP",
+                    "id": "AdoSTG-SE-02",
+                    "reference": "",
+                    "objectives": [
+                        "Identify functionality exposing secrets"
+                    ]
+                },
+                {
+                    "name": "Dumping of Enviornmental Variables: Printenv",
+                    "id": "AdoSTG-SE-03",
+                    "reference": "",
+                    "objectives": [
+                        "Identify functionality exposing secrets"
+                    ]
+                },
+                {
+                    "name": "Dumping of Enviornmental Variables: set, env",
+                    "id": "AdoSTG-SE-04",
+                    "reference": "",
+                    "objectives": [
+                        "Identify functionality exposing secrets"
+                    ]
+                },
+                {
+                    "name": "Hardcoded Secrets",
+                    "id": "AdoSTG-SE-05",
+                    "reference": "",
+                    "objectives": [
+                        "Identify hardcoded credentials"
+                    ]
+                }
+            ]
+        },
+        "pipelineInjection": {
+            "id": "AdoSTG-PI",
+            "tests": [
+                {
+                    "name": "Script (compile-time template expression) Injection point found",
+                    "id": "AdoSTG-PI-01",
+                    "reference": "https://pulsesecurity.co.nz/advisories/Azure-Devops-Command-Injection",
+                    "objectives": [
+                        "Identify pipelines where users can inject code to be run by pipeline"
+                    ]
+                },
+                {
+                    "name": "Parameter interpolation in runtime expressions",
+                    "id": "AdoSTG-PI-02",
+                    "reference": "",
+                    "objectives": [
+                        "Identify pipelines where users can inject code to be run by pipeline"
+                    ]
+                },
+                {
+                    "name": "Variable from PR context",
+                    "id": "AdoSTG-PI-03",
+                    "reference": "",
+                    "objectives": [
+                        "Identify pipelines where users can inject code to be run by pipeline"
+                    ]
+                },
+                {
+                    "name": "Macro references an injectable context",
+                    "id": "AdoSTG-PI-04",
+                    "reference": "",
+                    "objectives": [
+                        "Identify pipelines where users can inject code to be run by pipeline"
+                    ]
+                },
+                {
+                    "name": "Dynamic template reference",
+                    "id": "AdoSTG-PI-05",
+                    "reference": "https://github.com/praetorian-inc/trajan/blob/main/pkg/azuredevops/detections/pipelineinjection/pipelineinjection.go",
+                    "objectives": [
+                        "Identify templates with dynamic expressions"
+                    ]
+                },
+                {
+                    "name": "Dynamic template reference with runtime expression",
+                    "id": "AdoSTG-PI-06",
+                    "reference": "",
+                    "objectives": [
+                        ""
+                    ]
+                },
+                {
+                    "name": "Wildcard Trigger(s)",
+                    "id": "AdoSTG-PI-07",
+                    "reference": "https://github.com/praetorian-inc/trajan/blob/main/pkg/azuredevops/detections/pipelineinjection/pipelineinjection.go",
+                    "objectives": [
+                        "Identify pipelines where insecure triggers can be abused to run untrusted code"
+                    ]
+                }
+            ]
+        },
+        "agentPools": {
+            "id": "AdoSTG-AP",
+            "tests": [
+                {
+                    "name": "Self-hosted agent pool",
+                    "id": "AdoSTG-AP-01",
+                    "reference": "https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/pools-queues",
+                    "objectives": [
+                        "Identify self-hosted agents"
+                    ]
+                },
+                {
+                    "name": "Self-hosted agent pool AutoProvisioned",
+                    "id": "AdoSTG-AP-02",
+                    "reference": "",
+                    "objectives": [
+                        "Identify auto-provisioned self-hosted agents"
+                    ]
+                },
+                {
+                    "name": "Exessive Number of Agent Pool Admins",
+                    "id": "AdoSTG-AP-03",
+                    "reference": "",
+                    "objectives": [
+                        "Identify excessive administrators for pools"
+                    ]
+                }
+            ]
+        },
+        "users": {
+            "id": "AdoSTG-USR",
+            "tests": [
+                {
+                    "name": "External Administrators Found",
+                    "id": "AdoSTG-USR-01",
+                    "reference": "",
+                    "objectives": [
+                        "Identify external administrators"
+                    ]
+                },
+                {
+                    "name": "Excessive Repository Access",
+                    "id": "AdoSTG-USR-02",
+                    "reference": "",
+                    "objectives": [
+                        "Identify excessive repo/project access"
+                    ]
+                }
+            ]
+        },
+        "pipelineAccessControls": {
+            "id": "AdoSTG-PAC",
+            "tests": [
+                {
+                    "name": "Variable group accessible in environment variable",
+                    "id": "AdoSTG-PAC-01",
+                    "reference": "https://oneuptime.com/blog/post/2026-02-16-how-to-use-variable-groups-and-secret-variables-in-azure-pipelines-yaml/view",
+                    "objectives": [
+                        "Identify a variable group with 'accessible to all pipelines' enabled"
+                    ]
+                },
+                {
+                    "name": "Lacking Approval Gates for Pipeline",
+                    "id": "AdoSTG-PAC-02",
+                    "reference": "https://learn.microsoft.com/en-us/azure/devops/pipelines/release/approvals/?view=azure-devops&tabs=yaml",
+                    "objectives": [
+                        "Identify a lack of approvers for pipelines", "Check that users cannot approve their own approval requests"
+                    ]
+                },
+                {
+                    "name": "Approvers Allowed to Approve Their Own Requests",
+                    "id": "AdoSTG-PAC-03",
+                    "reference": "",
+                    "objectives": [
+                        "Identify users allowed to approve their own pull requests"
+                    ]
+                }
+            ]
+        },
+        "projects": {
+            "id": "AdoSTG-PRO",
+            "tests": [
+                {
+                    "name": "Project set to 'Public'",
+                    "id": "AdoSTG-PRO-01",
+                    "reference": "",
+                    "objectives": [
+                        "Identify public projects"
+                    ]
+                },
+                {
+                    "name": "Excessive Number of Admins found for Project(s)",
+                    "id": "AdoSTG-PRO-02",
+                    "reference": "",
+                    "objectives": [
+                        "Identify Excessive Administrators for project"
+                    ]
+                }
+            ]
+        },
+        "organization": {
+            "id": "AdoSTG-ORG",
+            "tests": [
+                {
+                    "name": "Insecure Organization Settings",
+                    "id": "AdoSTG-ORG-01",
+                    "reference": "https://www.cloudthat.com/resources/blog/azure-devops-best-practices-part-1",
+                    "objectives": [
+                        "Identify insecure settings in an Azure DevOps organization"
+                    ]
+                }
+            ]
+        }
+    }
+}
