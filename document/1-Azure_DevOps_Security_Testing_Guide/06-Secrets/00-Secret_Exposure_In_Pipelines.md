@@ -1,7 +1,7 @@
 # Testing for Issues Related to Secrets
 |ID          |
 |------------|
-|AdoSTG-AI-01|
+|AdoSTG-SE-01|
 
 # 1 - Summary
 Secrets in plaintext are one of the enduring issues for cybersecurity. Azure DevOps furthermore introduces several ways in which a developer can expose secrets, credentials, tokens, etc. Most of these issues revolve around either hardcoding secrets in files or implementing functionality that prints secrets stored in the .env file to somewhere accessible to an attacker.
