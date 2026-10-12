@@ -1,0 +1,1 @@
+Projects are a substructure of an organization, this is where repos, boards, and pipelines reside. This section contains the methodology for testing for insecure project configuration. The issue specifically is the use of public projects, this has since been discontinued by Microsoft, and new projects cannot be created as public, and projects cannot be changed to public anymore.
