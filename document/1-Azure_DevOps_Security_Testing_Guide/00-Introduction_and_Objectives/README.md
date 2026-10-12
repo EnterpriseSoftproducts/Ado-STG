@@ -1,40 +1,45 @@
-# Introduction:
-This project is heavily inspired by the [OWASP Web Security Testing Guide (WSTG)](https://owasp.github.io/www-project-web-security-testing-guide/), and their amazing work in standardizing and documenting web security best practices.
+# Introduction and Objectives
 
-## Purpose and Scope
-In short, this framework provides a central resource for testing and securing Azure DevOps environments. We aim to map and document attack vectors and areas of risk so that defenders can approach securing their environments in a structured and repeatable manner.
+This section describes the Enterprise Softproducts Azure DevOps security testing methodology and explains how to test for evidence of vulnerabilities within the application due to deficiencies with identified security controls.
 
-In terms of scope, the framework deals only with Azure DevOps; other factors like software supply chains and security testing of source code are not a part of the framework. The inclusion of scanning (SAST, DAST, SCA) in CI/CD processes is included, but not the security of the underlying software itself. So, to summarize, the scope is the platform and configuration of platform-specific elements, not the software security itself; for this, please refer to resources such as the [https://owasp.github.io/www-project-web-security-testing-guide/](OWASP WSTG).
+## What is Azure DevOps Security Testing?
 
-## Why Testing of Your DevOps Matters
-DevOps setups stand as a central part of the modern software development lifecycle. This is due to the functionality needed to both manage and deliver software. These systems often store critical data such as source code and also integrate into critical business processes; this often also means that they have high privileges and access to key infrastructure assets. Thus, if these are compromised, this can lead to critical business impact and potentially compromise additional related services and assets.
+A security test is a method of evaluating the security of a computer system or network by methodically validating and verifying the effectiveness of application security controls. A test of an Azure DevOps setup focuses only on evaluating the security of an Azure DevOps setup, by this we only mean parts specific to the platform such as project, repositories, and pipelines. We are not evaluating the code hosted on the platform. The process involves an active analysis of the application for any weaknesses, technical flaws, or vulnerabilities. Any security issues that are found will be presented to the system owner, together with an assessment of the impact, a proposal for mitigation or a technical solution.
 
-A key case illustrating how a compromise of a CI/CD platform can lead to severe business impact is the case of the [Novo Nordisk compromise in 2026](https://www.enterprisesoftproducts.com/blog/20260618NovoNordiskHack.html), where attackers gained read access to the organization's GitHub. This access was then used to compromise key business secrets like drug formulas and processes. Attackers were furthermore able to compromise related assets like other cloud providers, AI training data and weights in the organization's Hugging Face tenant, and much more.
+## What is a Vulnerability?
 
-## Who Should Use This Guide
-The Ado-STG is designed for:
-- Penetration testers and security professionals who conduct ADO security reviews.
-- In-house security professionals in charge of securing ADO setups.
-- Developers and infrastructure professionals working in ADO.
+A vulnerability is a flaw or weakness in a system's design, implementation, operation or management that could be exploited to compromise the system's security objectives.
 
-Secondary audiences include management and governance specialists in charge of defining and implementing security requirements for their DevOps setup.
+## What is a Threat?
 
-## How is This Gudie Structured
-The Ado-STG is structured as follows:
-- [Azure DevOps - Security Testing Guide (Ado-STG)]([/](https://www.enterprisesoftproducts.com/)resources/azuredevops/home.html) - This page contains the introduction to the project, explains the framework, and sets the context for the use of the framework</li>
-- Azure DevOps - Security Testing Guide Categories - Provides concrete, how-to-test procedures for each major building block of ADO (e.g., pipeline injection, organization setup, service connections, etc.)
+A threat is anything (a malicious external attacker, an internal user, a system instability, etc.) that may harm the assets owned by an application (resources of value, such as the data in a database or in the file system) by exploiting a vulnerability.
 
-Readers new to security testing should start here and then progress through each of the categories and gain a general understanding of the structure of the individual tests. Then, when testing, follow the how-tos and approach testing in a structured manner, remembering to keep good notes and track progress throughout the entire process.
+## What is a Test?
 
+A test is an action to demonstrate that an application meets the security requirements of its stakeholders.
 
-# Terms of use
-## License and Attribution
+## The Approach in Writing this Guide
 
-The Ado-STG is released under the "CC BY-SA 4.0" license. In essence, this means that anyone is free to share and modify the project. You are, however, required to attribute any use of the project to Enterprise Softproducts; you are required to use the same license for any projects using this content; and lastly, you may not add additional restrictions to any derivative works.
+Enterprise Softproducts approach is open and collective:
 
-[![Creative Commons License](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/ "CC BY-SA 4.0")
+- Open: every security expert can participate with their experience in the project. Everything is free.
+- Collaborative: additions, comments, and changes from the users and community are welcomed and encouraged.
 
-If you are a consultant and using this framework for your assessments, please also reference Enterprise Softproducts and this framework.
+This approach tends to result in a defined Testing Methodology that will be:
 
-## How To Reference Ado-STG Scenarios
-Each scenario has an identifier in the format AdoSTG-<category>-<number>, where 'category' is a 2-3 character uppercase string that identifies the type of test or weakness, and 'number' is a zero-padded numeric value from 01 to 99. For example: AdoSTG-SC-02 is the second Service Connection test.
+- Consistent
+- Reproducible
+- Rigorous
+- Under quality control
+
+The problems to be addressed are fully documented and tested. It is important to use various methods to test all the known vulnerabilities and document all the security test activities.
+
+## What Is the Enterprise Softproducts Testing Methodology?
+
+Security testing will never be an exact science where a complete list of all possible issues that should be tested can be defined. In fact, security testing is only one of the several suitable techniques for testing the security of web applications under certain circumstances. The goal of this project is to collect all the possible testing techniques, explain these techniques, and keep the guide updated. 
+
+The testing model consists of:
+
+- Tester: Who performs the testing activities
+- Tools and methodology: The core of this Testing Guide project
+- Application: The Azure DevOps environment
