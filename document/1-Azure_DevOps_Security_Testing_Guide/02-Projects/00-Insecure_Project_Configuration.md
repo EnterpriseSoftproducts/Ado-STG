@@ -1,3 +1,8 @@
+# Testing for Insecure Project Configuration
+|ID          |
+|------------|
+|AdoSTG-PRO-01, 02|
+
 # 1 - Summary
 When a project in Azure DevOps is public, this means that anyone with the link can see the project and its contents. This exposes the code and any secrets or misconfigurations to public scrutiny. ADO has now made it impossible to create new public projects. If you need a public project, use GitHub or a similar service to host it, and ensure no sensitive information is disclosed within the project.
 
