@@ -37,4 +37,4 @@ The Ado-STG is released under the "CC BY-SA 4.0" license. In essence, this means
 If you are a consultant and using this framework for your assessments, please also reference Enterprise Softproducts and this framework.
 
 ## How To Reference Ado-STG Scenarios
-Each scenario has an identifier in the format AdoSTG-<category>-<number>, where 'category' is a 2-3 character uppercase string that identifies the type of test or weakness, and 'number' is a zero-padded numeric value from 01 to 99. For example: AdoSTG-SC-02 is the second Service Connection test.
+Each scenario has an identifier in the format `AdoSTG-<category>-<number>`, where `'category'` is a 2-3 character uppercase string that identifies the type of test or weakness, and 'number' is a zero-padded numeric value from 01 to 99. For example: AdoSTG-SC-02 is the second Service Connection test.
